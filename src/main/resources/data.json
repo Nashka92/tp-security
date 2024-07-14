@@ -1,0 +1,96 @@
+{
+  "users": [
+    {
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "password": "password123",
+      "roles": "ROLE_USER",
+      "isEnabled": true
+    },
+    {
+      "name": "Mike",
+      "email": "mike@example.com",
+      "password": "password123",
+      "roles": "ROLE_ADMIN",
+      "isEnabled": true
+    }
+  ],
+  "accounts": [
+    {
+      "customerId": 1,
+      "accountNumber": 1234567890,
+      "accountType": "Savings",
+      "branchAddress": "123 Main St",
+      "createDt": "2024-07-14"
+    }
+  ],
+  "account_transactions": [
+    {
+      "transactionId": "tx123",
+      "accountNumber": 1234567890,
+      "customerId": 1,
+      "transactionDt": "2024-07-14",
+      "transactionSummary": "Deposit",
+      "transactionType": "Credit",
+      "transactionAmt": 1000,
+      "closingBalance": 2000,
+      "createDt": "2024-07-14"
+    }
+  ],
+  "cards": [
+    {
+      "cardId": 1,
+      "customerId": 1,
+      "cardNumber": "1234-5678-9012-3456",
+      "cardType": "Credit",
+      "totalLimit": 5000,
+      "amountUsed": 1000,
+      "availableAmount": 4000,
+      "createDt": "2024-07-14"
+    }
+  ],
+  "contact_messages": [
+    {
+      "contactId": "c123",
+      "contactName": "Jane Doe",
+      "contactEmail": "jane.doe@example.com",
+      "subject": "Inquiry",
+      "message": "I have a question about my account.",
+      "createDt": "2024-07-14"
+    }
+  ],
+  "customers": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "mobileNumber": "123-456-7890",
+      "pwd": "password123",
+      "role": "USER",
+      "createDt": "2024-07-14"
+    }
+  ],
+  "loans": [
+    {
+      "loanNumber": 1,
+      "customerId": 1,
+      "startDt": "2024-07-14",
+      "loanType": "Home",
+      "totalLoan": 250000,
+      "amountPaid": 50000,
+      "outstandingAmount": 200000,
+      "createDt": "2024-07-14"
+    }
+  ],
+  "notices": [
+    {
+      "noticeId": 1,
+      "noticeSummary": "Maintenance Notice",
+      "noticeDetails": "Scheduled maintenance on 2024-07-20.",
+      "noticBegDt": "2024-07-20",
+      "noticEndDt": "2024-07-21",
+      "createDt": "2024-07-14",
+      "updateDt": "2024-07-14"
+    }
+  ]
+}
