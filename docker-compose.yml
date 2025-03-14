@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+
+  ## SERVICE DATABASE ##
+  db-m2i:
+    env_file:
+      - .env
+    image: mysql:8.3
+    container_name: m2i-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: m2i_db
+      MYSQL_USER: ${SPRING_DATASOURCE_USERNAME}
+      MYSQL_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+
+    ports:
+      - "3306:3306"
+    networks:
+      - m2i-network
+    volumes:
+      - db-data:/var/lib/mysql
+
+  ## SERVICE PHPMYADMIN ##
+  phpmyadmin:
+    env_file:
+      - .env
+    image: phpmyadmin
+    container_name: m2i_phpmyadmin
+    restart: always
+    depends_on:
+      - db-m2i
+    ports:
+      - "8091:80"
+    environment:
+      PMA_HOST: db-m2i
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    networks:
+      - m2i-network
+
+
+  ## SERVICE BACKEND ##
+  backend:
+    env_file:
+      - .env
+    build:
+      dockerfile: Dockerfile
+    container_name: m2i-backend
+    restart: always
+    depends_on:
+      - db-m2i
+    environment:
+      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: admin
+    ports:
+      - "8090:8080"
+    networks:
+      - m2i-network
+
+
+networks:
+  m2i-network:
+
+volumes:
+  db-data:
+
+
